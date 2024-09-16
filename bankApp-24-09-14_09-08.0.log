@@ -1,0 +1,10 @@
+24-09-14 09:08:57.557 [main] INFO  c.e.b.BankManagementSystemApplication - Starting BankManagementSystemApplication using Java 22.0.1 with PID 42360 (D:\workspace-spring\bank-management-system\target\classes started by Tathagat in D:\workspace-spring\bank-management-system) 
+24-09-14 09:08:57.568 [main] INFO  c.e.b.BankManagementSystemApplication - No active profile set, falling back to 1 default profile: "default" 
+24-09-14 09:08:58.793 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode. 
+24-09-14 09:08:58.835 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 1 MongoDB repository interface. 
+24-09-14 09:08:59.255 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http) 
+24-09-14 09:08:59.262 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"] 
+24-09-14 09:08:59.265 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+24-09-14 09:08:59.265 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.28] 
+24-09-14 09:08:59.348 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+24-09-14 09:08:59.349 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1595 ms 
