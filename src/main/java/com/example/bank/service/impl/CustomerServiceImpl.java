@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,14 +24,16 @@ public class CustomerServiceImpl implements CustomerService
     }
 
     @Override
-    public Customer saveCustomer(Customer customer)
+    public Customer saveCustomer(Customer customer, String userName)
     {
+        customer.setDate(LocalDateTime.now());
         return customerRepository.save(customer);
         //return "Customer Created with Id:-"+customer.getId();
     }
 
     @Override
-    public List<Customer> getAllCustomer() {
+    public List<Customer> getAllCustomer()
+    {
         return customerRepository.findAll();
     }
 }

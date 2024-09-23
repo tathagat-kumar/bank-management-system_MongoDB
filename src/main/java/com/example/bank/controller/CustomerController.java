@@ -1,7 +1,9 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.Customer;
+import com.example.bank.model.User;
 import com.example.bank.service.CustomerService;
+import com.example.bank.service.UserService;
 import com.example.bank.service.impl.CustomerServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,20 +24,29 @@ public class CustomerController
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private UserService userService;
+
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @PostMapping("/createCustomer")
-    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer)
+    @PostMapping("/createCustomer/{userName}")
+    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer,@PathVariable String userName)
     {
+        User user = userService.findByUserName(userName);
+        Customer savedCustomer = customerService.saveCustomer(customer,userName);
+        user.getCustomerList().add(savedCustomer);
+        userService.saveUser(user);
         log.info("Customer created successfully!");
-        return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.CREATED);
+        return new ResponseEntity<Customer>(customerService.saveCustomer(customer,userName), HttpStatus.CREATED);
     }
 
-    @GetMapping("/getAllCustomer")
-    public ResponseEntity<List<Customer>> getAllCustomer()
+    @GetMapping("/getAllCustomer/{userName}")
+    public ResponseEntity<List<Customer>> getAllCustomer(@PathVariable String userName)
     {
-        return new ResponseEntity<List<Customer>>(customerService.getAllCustomer(),HttpStatus.OK);
+        User user = userService.findByUserName(userName);
+        List<Customer> customerList = user.getCustomerList();
+        return new ResponseEntity<List<Customer>>(customerList,HttpStatus.OK);
     }
 }
